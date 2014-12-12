@@ -15,10 +15,20 @@ Oleksandr Knyga <oleksandrknyga@gmail.com>, 2014
 				parentOffset = $parent.offset();
 			var position = $this.width() / parentWidth;
 
+			var getPosition = function(e, parentOffset, parentWidth) {
+				return Math.min(100, Math.round(100 * ((e.pageX - parentOffset.left) / parentWidth)));
+			};
+
 			$parent.on('mousedown', function() {
 				isDown = true;
 				options.onStart.call(that, position);
+			})
+			.on('click', function(e) {
+				position = getPosition(e, parentOffset, parentWidth);
+				$this.css('width', position + '%');
+				options.onChange.call(that, position);
 			});
+
 			$('body').on('mouseup', function() {
 				if(isDown) {
 					options.onEnd.call(that, position);
@@ -31,7 +41,7 @@ Oleksandr Knyga <oleksandrknyga@gmail.com>, 2014
 					return;
 				}
 
-				position = Math.min(100, Math.round(100 * ((e.pageX - parentOffset.left) / parentWidth)));
+				position = getPosition(e, parentOffset, parentWidth);
 				$this.css('width', position + '%');
 				options.onChange.call(that, position);
 			});
