@@ -17,11 +17,14 @@ Oleksandr Knyga <oleksandrknyga@gmail.com>, 2014
 
 			$parent.on('mousedown', function() {
 				isDown = true;
-				options.onStart.call(that);
+				options.onStart.call(that, position);
 			});
 			$('body').on('mouseup', function() {
+				if(isDown) {
+					options.onEnd.call(that, position);
+				}
+
 				isDown = false;
-				options.onEnd.call(that);
 			})
 			.on('mousemove', function(e) {
 				if(!isDown) {
