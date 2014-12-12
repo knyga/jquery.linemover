@@ -16,7 +16,11 @@ Oleksandr Knyga <oleksandrknyga@gmail.com>, 2014
 			var position = $this.width() / parentWidth;
 
 			var getPosition = function(e, parentOffset, parentWidth) {
-				return Math.min(100, Math.round(100 * ((e.pageX - parentOffset.left) / parentWidth)));
+				return Math.max(0,
+						Math.min(100, 
+						Math.round(100 * ((e.pageX - parentOffset.left) / parentWidth))
+					)
+				);
 			};
 
 			$parent.on('mousedown', function() {
