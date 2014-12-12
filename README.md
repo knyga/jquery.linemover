@@ -3,6 +3,8 @@ jquery.linemover
 
 Allows user to move line blocks, like volume and process.
 
+![](http://i.imgur.com/qOvF1Tv.png)
+
 ```javascript
 $('.ac__progress-line').linemover({
   onChange: $.noop,
