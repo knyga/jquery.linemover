@@ -27,7 +27,7 @@ Oleksandr Knyga <oleksandrknyga@gmail.com>, 2014
 				isDown = true;
 				options.onStart.call(that, position);
 			})
-			.on('click', function(e) {
+			.on('mouseup', function(e) {
 				position = getPosition(e, parentOffset, parentWidth);
 				$this.css('width', position + '%');
 				options.onChange.call(that, position);
