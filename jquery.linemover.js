@@ -11,7 +11,7 @@ Oleksandr Knyga <oleksandrknyga@gmail.com>, 2014
 			var $this = $(this),
 				$parent = $(this).parent();
 			var isDown = false;
-			var position = $this.width() / parentWidth;
+			var position = $this.width() / $parent.width();
 
 			var getPosition = function(e, parentOffset, parentWidth) {
 				return Math.max(0,
