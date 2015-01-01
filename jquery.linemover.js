@@ -10,9 +10,7 @@ Oleksandr Knyga <oleksandrknyga@gmail.com>, 2014
 			var that = this;
 			var $this = $(this),
 				$parent = $(this).parent();
-			var isDown = false,
-				parentWidth = $parent.width(),
-				parentOffset = $parent.offset();
+			var isDown = false;
 			var position = $this.width() / parentWidth;
 
 			var getPosition = function(e, parentOffset, parentWidth) {
@@ -28,7 +26,7 @@ Oleksandr Knyga <oleksandrknyga@gmail.com>, 2014
 				options.onStart.call(that, position);
 			})
 			.on('mouseup', function(e) {
-				position = getPosition(e, parentOffset, parentWidth);
+				position = getPosition(e, $parent.offset(), $parent.width());
 				$this.css('width', position + '%');
 				options.onChange.call(that, position);
 			});
@@ -45,7 +43,7 @@ Oleksandr Knyga <oleksandrknyga@gmail.com>, 2014
 					return;
 				}
 
-				position = getPosition(e, parentOffset, parentWidth);
+				position = getPosition(e, $parent.offset(), $parent.width());
 				$this.css('width', position + '%');
 				options.onChange.call(that, position);
 			});
